@@ -1,0 +1,37 @@
+{
+  "name": "nodejs-monitoring",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "rimraf ./build && tsc",
+    "lint": "eslint ./src/**/*.ts",
+    "lint:fix": "eslint ./src/**/*.ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulEvans8669/nodejs-monitoring.git"
+  },
+  "author": "Paul Evans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulEvans8669/nodejs-monitoring/issues"
+  },
+  "homepage": "https://github.com/PaulEvans8669/nodejs-monitoring#readme",
+  "dependencies": {
+    "nedb": "^1.8.0",
+    "typescript": "^4.4.2"
+  },
+  "devDependencies": {
+    "@types/nedb": "^1.8.12",
+    "@types/node": "^16.7.10",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "rimraf": "^3.0.2"
+  }
+}
