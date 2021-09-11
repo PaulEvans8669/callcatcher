@@ -24,18 +24,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-  lint:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run ESLint
+
+      - name: Lint
         run: npm run lint
-  build:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install modules
-        run: npm install
-      - name: Run Build
+
+      - name: Build
         run: npm run build
