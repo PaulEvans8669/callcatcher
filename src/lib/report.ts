@@ -4,7 +4,7 @@ import {ReportService} from '../services/report-service';
 
 /**
  * After probing a server, the method send a report containing a Hit array
- * The Report interface is the NodeJS-Monitoring way of interfacing with
+ * The Report interface is the CallCatcher way of interfacing with
  * the data. See The Report interface for more information.
  * @example
  *  // expressJs example
