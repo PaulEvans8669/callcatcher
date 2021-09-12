@@ -6,6 +6,7 @@ export interface Hit {
             code: number;
             message: string;
         }
+        datetime?: number;
     };
     request: {
         httpVersion: string;
@@ -13,6 +14,6 @@ export interface Hit {
         method?: string;
         headers: IncomingHttpHeaders;
         body: object;
+        datetime: number;
     };
-    datetime: Date;
 }

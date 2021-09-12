@@ -23,34 +23,49 @@ export function probe(server: Server): void {
   const db: Report = ReportService.getInstance().getReport(port);
 
   // listen all requests comming on the server
-  server.on('request', (req: IncomingMessage, res: ServerResponse) => {
-    const {statusCode, statusMessage} = res;
+  server.on('request', async (req: IncomingMessage, res: ServerResponse) => {
+    const startTime = new Date().getTime();
+
+    const resFinishPromise = new Promise<number>((resolve) => {
+      res.on('finish', () => {
+        // resolve the promise and return the current time epoch (millis)
+        resolve(new Date().getTime());
+      });
+    });
 
     let data = '';
-
     // build the incomming body parameters
     req.on('data', (chunk) => data += chunk);
 
     // when the request is fully built,
     // assemble a new Hit and store it using NeDB
-    req.on('end', () => {
-      const hit: Hit = {
-        request: {
-          httpVersion: req.httpVersion,
-          url: req.url,
-          method: req.method,
-          headers: req.headers,
-          body: JSON.parse(data || '{}'),
-        },
-        response: {
-          status: {
-            code: statusCode,
-            message: statusMessage,
+    // the data is fully populated here
+    const reqEndPromise = new Promise<Hit>((resolve) => {
+      req.on('end', () => {
+        // build a new hit
+        const hit: Hit = {
+          request: {
+            httpVersion: req.httpVersion,
+            url: req.url,
+            method: req.method,
+            headers: req.headers,
+            body: JSON.parse(data || '{}'),
+            datetime: startTime,
           },
-        },
-        datetime: new Date(),
-      };
-      db.insert(hit);
+          response: {
+            status: {
+              code: res.statusCode,
+              message: res.statusMessage,
+            },
+          },
+        };
+        // resolve the promise and return the new built hit in it
+        resolve(hit);
+      });
     });
+
+    const hit = await Promise.resolve<Hit>(reqEndPromise);
+    hit.response.datetime = await Promise.resolve<number>(resFinishPromise);
+    db.insert(hit);
   });
 }

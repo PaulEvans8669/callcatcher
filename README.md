@@ -101,19 +101,20 @@ A [Hit](src/interfaces/hit.ts) is the data structure of a single api call, which
 
 ```typescript
 export interface Hit {
-    response: {
-        status: {
-            code: number;
-            message: string;
-        }
-    };
-    request: {
-        httpVersion: string;
-        url?: string;
-        method?: string;
-        headers: IncomingHttpHeaders;
-        body: object;
-    };
-    datetime: Date;
+  response: {
+    status: {
+      code: number;
+      message: string;
+    }
+    datetime?: number;
+  };
+  request: {
+    httpVersion: string;
+    url?: string;
+    method?: string;
+    headers: IncomingHttpHeaders;
+    body: object;
+    datetime: number;
+  };
 }
 ```
