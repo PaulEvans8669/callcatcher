@@ -1,7 +1,7 @@
 {
   "name": "callcatcher",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Your native NodeJS monitoring API",
   "main": "dist/index.js",
   "files": [
     "/dist"
@@ -9,9 +9,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "lint": "eslint ./src/**/*.ts",
-    "lint:fix": "eslint ./src/**/*.ts --fix",
-    "publish": "npm version patch && npm run build && npm publish --acess public",
-    "publish:minor": "npm version minor && npm run build && npm publish --acess public"
+    "lint:fix": "eslint ./src/**/*.ts --fix"
   },
   "repository": {
     "type": "git",
