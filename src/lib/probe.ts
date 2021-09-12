@@ -8,7 +8,7 @@ import {Report} from '../interfaces/report';
  * incoming requests and locally stores them so they can be
  * used during future processes, like reporting.
  * @example
- *  // expressJs example
+ *  // express example
  *  // create a server
  *  const server = app.listen(8080, () => {
  *      console.log("Listening on port 8080")

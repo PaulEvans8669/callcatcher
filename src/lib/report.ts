@@ -7,7 +7,7 @@ import {ReportService} from '../services/report-service';
  * The Report interface is the CallCatcher way of interfacing with
  * the data. See The Report interface for more information.
  * @example
- *  // expressJs example
+ *  // express example
  *  // probe the server
  *  monitor.probe(server);
  *
