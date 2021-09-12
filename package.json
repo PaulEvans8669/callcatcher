@@ -15,6 +15,13 @@
     "type": "git",
     "url": "git+https://github.com/PaulEvans8669/callcatcher.git"
   },
+  "keywords": [
+    "api",
+    "monitoring",
+    "native",
+    "lightweight",
+    "database"
+  ],
   "author": "Paul Evans",
   "license": "ISC",
   "bugs": {
