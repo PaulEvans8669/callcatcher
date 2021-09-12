@@ -18,12 +18,12 @@ $ npm install callcatcher --save
     - [Probing](#probing)
     - [Reporting](#reporting)
 - Data structures
-    - Report
-    - Hit
+    - [Report](#report)
+    - [Hit](#hit)
 
 ## Methods
 
-### <a name="probing"></a>Probing
+### <a name="probing"></a> Probing
 
 The first step for monitoring your server is probing. When creating a server using any NodeJS compatible library, 
 the freshly created [`http.Server`](https://nodejs.org/api/http.html#http_class_http_server) can be probed using the [`probe()`](src/lib/probe.ts) method.
@@ -59,7 +59,7 @@ monitor.probe(server);
 ```
 
 
-### <a name="reporting"></a>Reporting
+### <a name="reporting"></a> Reporting
 
 The second step of monitoring you NodeJS app using CallCatcher is reporting. After probing your [`http.Server`](https://nodejs.org/api/http.html#http_class_http_server),
 the last step is to get the data back. The is where the [`report()`](src/lib/report.ts) method comes in handy.
@@ -87,7 +87,7 @@ app.get('/stats', (req,res) => {
 
 ## Data structures
 
-### Report
+### <a name="report"></a> Report
 
 A [Report](src/interfaces/report.ts) is an extension of a NeDB database containing Hits.
 
@@ -95,7 +95,7 @@ A [Report](src/interfaces/report.ts) is an extension of a NeDB database containi
 export class Report extends Nedb<Hit> {}
 ```
 
-### Hit
+### <a name="hit"></a> Hit
 
 A [Hit](src/interfaces/hit.ts) is the data structure of a single api call, which contains information on the request and the response.
 
