@@ -9,7 +9,9 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "lint": "eslint ./src/**/*.ts",
-    "lint:fix": "eslint ./src/**/*.ts --fix"
+    "lint:fix": "eslint ./src/**/*.ts --fix",
+    "publish": "npm version patch && npm run build && npm publish --acess public",
+    "publish:minor": "npm version minor && npm run build && npm publish --acess public"
   },
   "repository": {
     "type": "git",
