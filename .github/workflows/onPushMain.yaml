@@ -31,11 +31,3 @@ jobs:
 
       - name: Test & Coverage
         run: npm run test
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./coverage/
-          flags: unittests
-          verbose: true
