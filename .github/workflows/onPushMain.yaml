@@ -29,8 +29,5 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      # - name: 'Automated Version Bump'
-      #   id: version-bump
-      #   uses: 'phips28/gh-action-bump-version@master'
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test-Cov
+        run: npm run test
