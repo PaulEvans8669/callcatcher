@@ -89,7 +89,7 @@ app.get('/stats', (req,res) => {
 
 ### <a name="report"></a> Report
 
-A [Report](src/interfaces/report.ts) is an extension of a NeDB database containing Hits.
+A [Report](src/models/report.ts) is an extension of a NeDB database containing Hits.
 
 ```typescript
 export class Report extends Nedb<Hit> {}
@@ -97,7 +97,7 @@ export class Report extends Nedb<Hit> {}
 
 ### <a name="hit"></a> Hit
 
-A [Hit](src/interfaces/hit.ts) is the data structure of a single api call, which contains information on the request and the response.
+A [Hit](src/models/hit.ts) is the data structure of a single api call, which contains information on the request and the response.
 
 ```typescript
 export interface Hit {

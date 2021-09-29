@@ -1,8 +1,13 @@
 import {IncomingMessage, Server, ServerResponse} from 'http';
 import {Hit} from '../interfaces/hit';
 import {ReportService} from '../services/report-service';
-import {Report} from '../interfaces/report';
 
+/**
+ * @callback insertionCallback
+ * @param {(Error | null)} error
+ * @param {Hit[]} documents
+ * @return {void}
+ */
 /**
  * Probing a server makes the library intercept all of the
  * incoming requests and locally stores them so they can be
@@ -17,11 +22,12 @@ import {Report} from '../interfaces/report';
  *  // probe the server
  *  monitor.probe(server);
  * @param {Server} server
+ * @param {insertionCallback} insertCb
  */
-export function probe(server: Server): void {
-  const port = (server as any)._connectionKey.split(':').pop();
-  const db: Report = ReportService.getInstance().getReport(port);
-
+export function probe(
+    server: Server,
+    insertCb?: (err: (Error | null), documents: Hit[]) => void)
+    : void {
   // listen all requests comming on the server
   server.on('request', async (req: IncomingMessage, res: ServerResponse) => {
     const startTime = new Date().getTime();
@@ -66,6 +72,11 @@ export function probe(server: Server): void {
 
     const hit = await Promise.resolve<Hit>(reqEndPromise);
     hit.response.datetime = await Promise.resolve<number>(resFinishPromise);
-    db.insert(hit);
+
+    // insert hit in database
+    const port = (server as any)._connectionKey.split(':').pop();
+    ReportService.getInstance().getReport(port).then((db) => {
+      db.insert(hit, insertCb);
+    });
   });
 }

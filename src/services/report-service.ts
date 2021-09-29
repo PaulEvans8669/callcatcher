@@ -1,5 +1,5 @@
 import path from 'path';
-import {Report} from '../interfaces/report';
+import {Report} from '../models/report';
 
 /**
  * This ReportService singleton lets the library interface with NeDB.
@@ -31,10 +31,24 @@ export class ReportService {
      * @param {number} port
      * @return {Report}
      */
-    public getReport(port: number): Report {
-      return this.dbs[port] ||= new Report({
-        filename: path.join('data', port + '.db'),
-        autoload: true,
+    public async getReport(port: number): Promise<Report> {
+      if (!Object.keys(this.dbs).includes(''+port)) {
+        this.dbs[port] = new Report({
+          filename: path.join('data', port + '.db'),
+        });
+        const loadPromise = new Promise<void>((res, rej) => {
+          this.dbs[port].loadDatabase((err) => {
+            if (err) {
+              rej(err);
+            } else {
+              res();
+            }
+          });
+        });
+        await loadPromise;
+      }
+      return new Promise((res) => {
+        res(this.dbs[port]);
       });
     }
 }

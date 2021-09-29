@@ -1,5 +1,5 @@
 import {Server} from 'http';
-import {Report} from '../interfaces/report';
+import {Report} from '../models/report';
 import {ReportService} from '../services/report-service';
 
 /**
@@ -20,7 +20,7 @@ import {ReportService} from '../services/report-service';
  * @param {Server} server
  * @return {Report}
  */
-export function report(server: Server): Report {
+export function report(server: Server): Promise<Report> {
   const port = (server as any)._connectionKey.split(':').pop();
   return ReportService.getInstance().getReport(port);
 }
