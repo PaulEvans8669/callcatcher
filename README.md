@@ -1,6 +1,10 @@
+[![npm version](https://badge.fury.io/js/callcatcher.svg)](https://badge.fury.io/js/callcatcher)
+[![codecov](https://codecov.io/gh/PaulEvans8669/callcatcher/branch/main/graph/badge.svg?token=9drZXADeaY)](https://codecov.io/gh/PaulEvans8669/callcatcher)
+[![Package Quality](https://packagequality.com/shield/callcatcher.svg)](https://packagequality.com/#?package=callcatcher)
 ![CallCatcher](callcatcher.png)
 
 # Your native NodeJS monitoring API
+
 
 CallCatcher is a flyweight typescript API managing request monitoring for NodeJS apps natively. 
 Requests and responses are locally saved, and redistributed to the developer through [NeDB](https://github.com/louischatriot/nedb).
