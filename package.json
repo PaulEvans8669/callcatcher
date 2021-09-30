@@ -1,6 +1,6 @@
 {
   "name": "callcatcher",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Your native NodeJS monitoring API",
   "main": "dist/index.js",
   "files": [
