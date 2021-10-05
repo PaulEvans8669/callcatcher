@@ -7,7 +7,7 @@
 
 
 CallCatcher is a flyweight typescript API managing request monitoring for NodeJS apps natively. 
-Requests and responses are locally saved, and redistributed to the developer through [NeDB](https://github.com/louischatriot/nedb).
+Requests and responses saved locally, and redistributed to the developer through [NeDB](https://github.com/louischatriot/nedb).
 It is then up to the developer to make use of the distributed data.
 
 # Installation
