@@ -58,9 +58,6 @@ export class Probe {
         res: ServerResponse,
     ): Promise<void> {
       const hit = await HitFactory.new(req, res);
-
-      console.log(this.server);
-      console.log(this.server);
       // insert hit in database
       ReportService.getInstance().getReport(this.port).then((db) => {
         db.insert(hit, this.onHitCallback);
