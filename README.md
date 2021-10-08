@@ -1,6 +1,7 @@
 [![npm version](https://badge.fury.io/js/callcatcher.svg)](https://badge.fury.io/js/callcatcher)
-[![codecov](https://codecov.io/gh/PaulEvans8669/callcatcher/branch/main/graph/badge.svg?token=9drZXADeaY)](https://codecov.io/gh/PaulEvans8669/callcatcher)
 [![Package Quality](https://packagequality.com/shield/callcatcher.svg)](https://packagequality.com/#?package=callcatcher)
+[![codecov](https://codecov.io/gh/PaulEvans8669/callcatcher/branch/main/graph/badge.svg?token=9drZXADeaY)](https://codecov.io/gh/PaulEvans8669/callcatcher)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/PaulEvans8669/callcatcher.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/PaulEvans8669/callcatcher/context:javascript)
 ![CallCatcher](callcatcher.png)
 
 # Your native NodeJS monitoring API
