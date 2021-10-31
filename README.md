@@ -17,6 +17,15 @@ It is then up to the developer to make use of the distributed data.
 $ npm install callcatcher --save
 ```
 
+# Documentation
+
+To generate the documentation use the following command :
+```shell
+$ npm run doc
+```
+
+This will generate a new `docs` folder located at the project's root. The entrypoint to the documentation is the `index.html` file.
+
 # API
 
 - Methods
@@ -25,7 +34,7 @@ $ npm install callcatcher --save
 - Data structures
     - [Report](#report)
     - [Hit](#hit)
-
+  
 ## Methods
 
 ### <a name="probing"></a> Probing
