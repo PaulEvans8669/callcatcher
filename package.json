@@ -10,7 +10,8 @@
     "build": "rimraf ./build && tsc",
     "lint": "eslint ./src/**/*.ts",
     "lint:fix": "eslint ./src/**/*.ts --fix",
-    "test": "jest --verbose --ci --coverage --detectOpenHandles && codecov"
+    "test": "jest --verbose --ci --coverage --detectOpenHandles && codecov",
+    "doc": "npx typedoc --out docs src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,6 @@
     "nedb": "^1.8.0"
   },
   "devDependencies": {
-    "@ava/typescript": "^2.0.0",
     "@types/jest": "^27.0.2",
     "@types/nedb": "^1.8.12",
     "@types/node": "^16.7.10",
@@ -46,6 +46,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
+    "typedoc": "^0.22.5",
     "typescript": "^4.4.3"
   },
   "jest": {
