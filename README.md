@@ -26,6 +26,16 @@ $ npm run doc
 
 This will generate a new `docs` folder located at the project's root. The entrypoint to the documentation is the `index.html` file.
 
+
+# Running tests
+
+To run unit test use the following command :
+```shell
+$ npm run test
+```
+
+This will generate a new `coverage` folder located at the project's root. This folder is used by codecov to calculate the coverage of the tests.
+
 # API
 
 - Methods
@@ -34,6 +44,10 @@ This will generate a new `docs` folder located at the project's root. The entryp
 - Data structures
     - [Report](#report)
     - [Hit](#hit)
+- Events
+  - Report
+    - [onHit](#onHit)
+    - [onError](#onError)
   
 ## Methods
 
@@ -131,4 +145,41 @@ export interface Hit {
     datetime: number;
   };
 }
+```
+
+## Events
+
+### Report
+
+#### <a name="onHit"></a> onHit
+
+When inserting documents (a.k.a. hits to a report), the `hit` event gets fired, containing the inserted documents :
+
+```typescript
+// models/report.ts
+// line 40
+            this.emit('hit', documents);
+```
+
+The emitted documents can then be used as such :
+```typescript
+const server: Server = /* init a new http.Server */;
+const rep: Report = await report(server);
+// A hit gets added to the report
+rep.on('hit', (docs: Hit[]) => {
+  console.log(docs);
+});
+```
+
+#### <a name="onError"></a> onError
+
+Similarly, as the hit event, the error event gets emitted with and error message when an error occurred when adding one or many hits to the report.
+
+```typescript
+const server: Server = /* init a new http.Server */;
+const rep: Report = await report(server);
+// A hit gets added to the report, but an error occurres ...
+rep.on('error', (err: Error) => {
+  console.err(err);
+});
 ```
