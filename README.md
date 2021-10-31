@@ -17,6 +17,23 @@ It is then up to the developer to make use of the distributed data.
 $ npm install callcatcher --save
 ```
 
+# Building
+
+To build the project, run the following command
+```shell
+$ npm run build
+```
+
+Please make sure you lint the project before building it
+```shell
+$ npm run lint
+```
+or
+```shell
+$ npm run lint:fix
+```
+
+
 # Documentation
 
 To generate the documentation use the following command :
